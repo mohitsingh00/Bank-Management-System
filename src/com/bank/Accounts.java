@@ -4,7 +4,6 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -13,10 +12,31 @@ public class Accounts {
 	private Connection connection;
 	private Scanner scanner;
 	
+	
 	public Accounts(Connection conneciton, Scanner scanner)
 	{
 		this.connection = conneciton;
 		this.scanner = scanner;
+	}
+	
+	public long getAccount_number(String email)
+	{
+		String query = "SELECT account_number FROM Accounts WHERE email = ?;";
+		try
+		{
+			PreparedStatement preparedStatement = connection.prepareStatement(query);
+			preparedStatement.setString(1, email);
+			ResultSet resultSet = preparedStatement.executeQuery();
+			if(resultSet.next())
+			{
+				return resultSet.getLong("account_number");
+			}
+		}
+		catch (SQLException e)
+		{
+			e.printStackTrace();
+		}
+		throw new RuntimeException("Account Number Doesn't Exist!");
 	}
 	
 	private long generateAccount_number()
