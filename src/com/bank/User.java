@@ -51,6 +51,7 @@ public class User {
 		}
 		
 	}
+	
 	public String login()
 	{
 		scanner.nextLine();
@@ -80,12 +81,30 @@ public class User {
 		}
 		
 		return null;
-		
 	}
 	
-	public void user_exist()
+	public boolean user_exist(String email)
 	{
-		
-	}
+		String query = "SELECT * FROM user WHERE email = ?";
+		try
+		{
+			PreparedStatement preparedStatement = connection.prepareStatement(query);
+			preparedStatement.setString(1, email);
+			ResultSet resultSet = preparedStatement.executeQuery();
+			if(resultSet.next())
+			{
+				return true;
+			}
+			else
+			{
+				return false;
+			}
+		}
+		catch (SQLException e) 
+		{
+			e.printStackTrace();
+		}
+		return false;
+ 	}
 
 }
