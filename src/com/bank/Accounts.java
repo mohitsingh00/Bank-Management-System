@@ -33,6 +33,24 @@ public class Accounts {
 		}
 	}
 	
+	private boolean accountExist(long account_number)
+	{
+		String query = "SELECT account_number FROM Accounts WHERE account_number = ?;";
+		try
+		{
+			PreparedStatement preparedStatement = connection.prepareStatement(query);
+			preparedStatement.setLong(1, account_number);
+			ResultSet resultSet = preparedStatement.executeQuery();
+			return resultSet.next();
+		}
+		catch (SQLException e) 
+		{
+			e.printStackTrace();
+		}
+		return false;
+		
+	}
+	
 	public boolean account_exist(String email)
 	{
 		String query = "SELECT account_number FROM Accounts WHERE email = ?";
