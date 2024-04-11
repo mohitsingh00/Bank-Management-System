@@ -4,6 +4,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.Random;
 import java.util.Scanner;
 
 public class Accounts {
@@ -15,6 +17,20 @@ public class Accounts {
 	{
 		this.connection = conneciton;
 		this.scanner = scanner;
+	}
+	
+	private long generateAccount_number()
+	{
+		Random random = new Random();
+		long account_number;
+		do 
+		{
+			account_number = 1000000000L + random.nextInt(900000000);
+		}
+		while(accountExist(account_number));
+		{
+			return account_number;
+		}
 	}
 	
 	public boolean account_exist(String email)
