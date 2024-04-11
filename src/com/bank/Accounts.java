@@ -13,10 +13,57 @@ public class Accounts {
 	private Scanner scanner;
 	
 	
-	public Accounts(Connection conneciton, Scanner scanner)
+	public Accounts(Connection connection, Scanner scanner)
 	{
-		this.connection = conneciton;
+		this.connection = connection;
 		this.scanner = scanner;
+	}
+	
+	public long openAccount(String email)
+	{
+		if(!account_exist(email))
+		{
+			String open_account_query = "INSERT INTO Accounts(account_number, full_name,"
+					                  + " email, balance, security_pin) VALUES(?, ?, ?, ?, ?)";
+			
+			System.out.println("Enter Full Name: ");
+			String full_name = scanner.nextLine();
+			System.out.println("Enter Initial Amount: ");
+			double balance = scanner.nextDouble();
+			scanner.nextLine();
+			System.out.println("Enter Security Pin: ");
+			String security_pin = scanner.nextLine();
+			
+			try
+			{
+				long account_number = generateAccount_number();
+				PreparedStatement preparedStatement = connection.prepareStatement(open_account_query);
+				preparedStatement.setLong(1, account_number);
+				preparedStatement.setString(2, full_name);
+				preparedStatement.setString(3, email);
+				preparedStatement.setDouble(4, balance);
+				preparedStatement.setString(5, security_pin);
+				int rowsAffected = preparedStatement.executeUpdate();
+				if(rowsAffected > 0)
+				{
+					return account_number;
+				}
+				else
+				{
+					throw new RuntimeException("Account Creation Failed");
+				}
+			}
+			catch (SQLException e) 
+			{
+				e.printStackTrace();
+				throw new RuntimeException("Account Creation Failed");
+			}
+			
+		}
+		else
+		{
+			throw new RuntimeException("Account Already Exist");
+		}
 	}
 	
 	public long getAccount_number(String email)
