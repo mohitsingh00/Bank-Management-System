@@ -41,7 +41,7 @@ public class AccountManager {
                     PreparedStatement preparedStatement1 = connection.prepareStatement(credit_query);
                     preparedStatement1.setDouble(1, amount);
                     preparedStatement1.setLong(2, account_number);
-                    int rowsAffected = preparedStatement.executeUpdate();
+                    int rowsAffected = preparedStatement1.executeUpdate();
                     if(rowsAffected > 0)
                     {
                         System.out.println("RS."+amount+" credited Successfully");
