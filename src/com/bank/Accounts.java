@@ -26,6 +26,7 @@ public class Accounts {
 			String open_account_query = "INSERT INTO Accounts(account_number, full_name,"
 					                  + " email, balance, security_pin) VALUES(?, ?, ?, ?, ?)";
 			
+			scanner.nextLine();
 			System.out.println("Enter Full Name: ");
 			String full_name = scanner.nextLine();
 			System.out.println("Enter Initial Amount: ");
