@@ -20,11 +20,11 @@ public class User {
 	public void register()
 	{
 		scanner.nextLine();
-		System.out.println("Full Name: ");
+		System.out.print("Full Name: ");
 		String full_name = scanner.nextLine();
-		System.out.println("Email: ");
+		System.out.print("Email: ");
 		String email = scanner.nextLine();
-		System.out.println("Password: ");
+		System.out.print("Password: ");
 		String password = scanner.nextLine();
 		if(user_exist(email))
 		{
@@ -59,9 +59,9 @@ public class User {
 	public String login()
 	{
 		scanner.nextLine();
-		System.out.println("Email: ");
+		System.out.print("Email: ");
 		String email = scanner.nextLine();
-		System.out.println("Password: ");
+		System.out.print("Password: ");
 		String password = scanner.nextLine();
 		String login_query = "SELECT * FROM User WHERE email = ? AND password = ?";
 		try

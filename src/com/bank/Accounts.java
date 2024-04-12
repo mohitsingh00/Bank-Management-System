@@ -27,12 +27,12 @@ public class Accounts {
 					                  + " email, balance, security_pin) VALUES(?, ?, ?, ?, ?)";
 			
 			scanner.nextLine();
-			System.out.println("Enter Full Name: ");
+			System.out.print("Enter Full Name: ");
 			String full_name = scanner.nextLine();
-			System.out.println("Enter Initial Amount: ");
+			System.out.print("Enter Initial Amount: ");
 			double balance = scanner.nextDouble();
 			scanner.nextLine();
-			System.out.println("Enter Security Pin: ");
+			System.out.print("Enter Security Pin: ");
 			String security_pin = scanner.nextLine();
 			
 			try

@@ -20,10 +20,10 @@ public class AccountManager {
     public void credit_money(long account_number) throws SQLException
     {
     	scanner.nextLine();
-        System.out.println("Enter Amount: ");
+        System.out.print("Enter Amount: ");
         double amount = scanner.nextDouble();
         scanner.nextLine();
-        System.out.println("Enter Security Pin: ");
+        System.out.print("Enter Security Pin: ");
         String security_pin = scanner.nextLine();
         try
         {
@@ -72,10 +72,10 @@ public class AccountManager {
     public void debit_money(long account_number) throws SQLException
     {
     	scanner.nextLine();
-        System.out.println("Enter Amount: ");
+        System.out.print("Enter Amount: ");
         double amount = scanner.nextDouble();
         scanner.nextLine();
-        System.out.println("Enter Security Pin: ");
+        System.out.print("Enter Security Pin: ");
         String security_pin = scanner.nextLine();
         try
         {
@@ -96,7 +96,7 @@ public class AccountManager {
                         PreparedStatement preparedStatement1 = connection.prepareStatement(debit_query);
                         preparedStatement1.setDouble(1, amount);
                         preparedStatement1.setLong(2, account_number);
-                        int rowsAffected = preparedStatement.executeUpdate();
+                        int rowsAffected = preparedStatement1.executeUpdate();
                         if(rowsAffected > 0)
                         {
                             System.out.println("RS."+amount+" debited Successfully");
@@ -132,12 +132,12 @@ public class AccountManager {
     public void transfer_money(long sender_account_number) throws SQLException
     {
     	scanner.nextLine();
-        System.out.println("Enter Recevier Account Number: ");
+        System.out.print("Enter Recevier Account Number: ");
         long receiver_account_number = scanner.nextLong();
-        System.out.println("Enter Amount: ");
+        System.out.print("Enter Amount: ");
         double amount = scanner.nextDouble();
         scanner.nextLine();
-        System.out.println("Enter Security Pin: ");
+        System.out.print("Enter Security Pin: ");
         String security_pin = scanner.nextLine();
         try
         {
