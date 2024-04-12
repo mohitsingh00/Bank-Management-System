@@ -144,7 +144,7 @@ public class AccountManager {
             connection.setAutoCommit(false);
             if(sender_account_number != 0 && receiver_account_number != 0)
             {
-                String query = "SELECT * FROM Accounts WHERE account_number = ? AND security = ?";
+                String query = "SELECT * FROM Accounts WHERE account_number = ? AND security_pin = ?";
                 PreparedStatement preparedStatement = connection.prepareStatement(query);
                 preparedStatement.setLong(1, sender_account_number);
                 preparedStatement.setString(2, security_pin);
