@@ -19,6 +19,7 @@ public class AccountManager {
 
     public void credit_money(long account_number) throws SQLException
     {
+    	scanner.nextLine();
         System.out.println("Enter Amount: ");
         double amount = scanner.nextDouble();
         scanner.nextLine();
@@ -70,6 +71,7 @@ public class AccountManager {
 
     public void debit_money(long account_number) throws SQLException
     {
+    	scanner.nextLine();
         System.out.println("Enter Amount: ");
         double amount = scanner.nextDouble();
         scanner.nextLine();
@@ -129,6 +131,7 @@ public class AccountManager {
 
     public void transfer_money(long sender_account_number) throws SQLException
     {
+    	scanner.nextLine();
         System.out.println("Enter Recevier Account Number: ");
         long receiver_account_number = scanner.nextLong();
         System.out.println("Enter Amount: ");
@@ -205,6 +208,7 @@ public class AccountManager {
 
     public void getBalance(long account_number)
     {
+    	scanner.nextLine();
         System.out.print("Enter Security Pin: ");
         String security_pin = scanner.nextLine();
         try
