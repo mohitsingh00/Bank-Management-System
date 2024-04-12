@@ -26,7 +26,11 @@ public class User {
 		String email = scanner.nextLine();
 		System.out.println("Password: ");
 		String password = scanner.nextLine();
-		
+		if(user_exist(email))
+		{
+            System.out.println("User Already Exists for this Email Address!!\n");
+            return;
+        }
 		
 		String register_query = "INSERT INTO User(full_name, email, password) VALUES(?,?,?)";
 		try
